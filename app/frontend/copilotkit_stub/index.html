@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>SMSGW AIOps - CopilotKit Stub</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; }
+      #output { white-space: pre-wrap; border: 1px solid #ddd; padding: 10px; height: 400px; overflow: auto; }
+      button { margin-top: 10px; }
+    </style>
+  </head>
+  <body>
+    <h2>SMSGW AIOps — CopilotKit Stub UI</h2>
+    <p>This is a minimal stub UI that calls the LangGraph diagnosis endpoint and shows the result. Replace with CopilotKit front-end as needed.</p>
+    <button id="btn">Run RAG Diagnosis</button>
+    <div id="output">Output will appear here</div>
+
+    <script>
+      document.getElementById('btn').onclick = async () => {
+        const out = document.getElementById('output')
+        out.innerText = 'Calling /api/v1/langgraph/diagnose ...'
+        try {
+          const res = await fetch('/api/v1/langgraph/diagnose')
+          const data = await res.json()
+          out.innerText = JSON.stringify(data, null, 2)
+        } catch (e) {
+          out.innerText = 'Error: ' + e.toString()
+        }
+      }
+    </script>
+  </body>
+</html>
